@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for message in messages %}
+<h2>{{ message[1] }}</h2>
+<br />
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<br />
+<br />
+<br />
+{{db_table | safe}}
+
+{% endblock %}

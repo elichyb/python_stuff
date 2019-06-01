@@ -1,0 +1,30 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{title}}</h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message[1] }}</li>
+    {% endfor %}
+</ul>
+    <br>
+    minimum is: {{ min }}
+{% endif %}
+{% endwith %}
+
+
+
+{{db_table | safe}}
+{{plot_img | safe}}
+
+<p>Current repository: <b>{{repository_name}}</b></p>
+    Minimum : {{ min }} <br>
+    Maximum: {{ max }}<br>
+    Summry: {{ summry }}<br>
+{% endblock %}
+
+

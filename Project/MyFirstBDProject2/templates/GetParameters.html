@@ -1,0 +1,47 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{title}}</h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message[1] }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+
+<form method=post>
+    {{ form.csrf }}
+    <table>
+        <tr>
+            <td class="input text">
+                {{ form.choosedatabase.label }}
+            </td>
+            <td>
+                {{ form.choosedatabase }}
+            </td>
+            <td>
+                {% if form.choosedatabase.errors %}
+                <ul class="text-danger">{% for error in form.choosedatabase.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="input submit">
+                <input type="submit" value="Go Pandas">
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+
+{% endblock %}
+
+
